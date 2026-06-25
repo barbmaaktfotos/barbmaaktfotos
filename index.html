@@ -39,15 +39,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 
 /* GRID — speels masonry */
 .grid-section{margin-top:0;padding:0 0 100px;position:relative;z-index:1}
-.photo-grid{column-count:3;column-gap:32px;padding:0 48px}
-.photo-grid .photo-item{break-inside:avoid;margin-bottom:32px;overflow:hidden;position:relative;cursor:pointer}
+.photo-grid{column-count:3;column-gap:80px;padding:0 80px}
+.photo-grid .photo-item{break-inside:avoid;margin-bottom:80px;overflow:hidden;position:relative;cursor:pointer}
 .photo-grid .photo-item img{width:100%;height:auto;display:block;transition:transform .4s ease,filter .3s}
 .photo-grid .photo-item:hover img{transform:scale(1.03);filter:brightness(.88)}
-/* Speelse offset per foto */
-.photo-item.offset-r{margin-left:12%;margin-right:-4%}
-.photo-item.offset-l{margin-right:12%;margin-left:-4%}
-.photo-item.small{transform:scale(0.82);transform-origin:center top}
-.photo-item.large{transform:scale(1.1);transform-origin:center top}
+/* Speelse offset per foto — alleen horizontaal, geen overlap */
+.photo-item.offset-r{margin-left:10%;width:90%}
+.photo-item.offset-l{margin-left:0;width:90%}
+.photo-item.small{width:70%;margin-left:15%}
 
 
 /* CATEGORIES */
@@ -136,7 +135,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Jack Jarryd kleur.jpg" alt="Concert Jack Jarryd kleur">
       </div>
-      <div class="photo-item large" onclick="openLightbox(this)">
+      <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/ANALOOG/Analoog concert KOKO.jpg" alt="Analoog concert KOKO">
       </div>
       <div class="photo-item offset-l" onclick="openLightbox(this)">
@@ -148,7 +147,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/ANALOOG/Analoog Portret Danique 2.jpg" alt="Analoog portret Danique">
       </div>
-      <div class="photo-item large offset-r" onclick="openLightbox(this)">
+      <div class="photo-item offset-r" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Eva van Manen hoofd.jpg" alt="Concert Eva van Manen">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
@@ -160,7 +159,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item offset-l" onclick="openLightbox(this)">
         <img src="assets/portret/Nikki Szofia .jpg" alt="Portret Nikki Szofia">
       </div>
-      <div class="photo-item large" onclick="openLightbox(this)">
+      <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concert Jack Jarryd roze">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
@@ -172,7 +171,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Weval grijs.jpg" alt="Concert Weval grijs">
       </div>
-      <div class="photo-item large" onclick="openLightbox(this)">
+      <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/portret/LOE.  (1).jpg" alt="Portret LOE.">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
@@ -184,7 +183,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Merle afstand.jpg" alt="Concert Merle afstand">
       </div>
-      <div class="photo-item large offset-r" onclick="openLightbox(this)">
+      <div class="photo-item offset-r" onclick="openLightbox(this)">
         <img src="assets/ANALOOG/Analoog Portret Danqique wit.jpg" alt="Analoog portret Danique wit">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
@@ -199,7 +198,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="photo-item offset-l" onclick="openLightbox(this)">
         <img src="assets/portret/Portret Lil rave.jpg" alt="Portret Lil rave">
       </div>
-      <div class="photo-item large" onclick="openLightbox(this)">
+      <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Eva van Manen.jpg" alt="Concert Eva van Manen">
       </div>
       <div class="photo-item small offset-r" onclick="openLightbox(this)">
