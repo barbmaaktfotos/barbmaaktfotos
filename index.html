@@ -31,13 +31,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 .page{display:none}.page.active{display:block}
 
 /* HERO — zweeft over het grid */
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;z-index:10;pointer-events:none}
+.hero{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;z-index:10;pointer-events:none}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(38px,7vw,90px);font-weight:300;line-height:1.05;letter-spacing:-1px;max-width:800px;margin:0 auto 20px;color:#fff;text-shadow:0 2px 40px rgba(0,0,0,.4)}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
 .hero-sub{font-size:14px;font-weight:400;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 
 /* GRID — begint bovenaan, schuift onder hero door */
-.grid-section{margin-top:-100svh;padding:0 0 100px;position:relative;z-index:1}
+.grid-section{margin-top:0;padding:100svh 0 100px;position:relative;z-index:1}
 .photo-grid{column-count:3;column-gap:96px;padding:0 96px}
 .photo-grid .photo-item{break-inside:avoid;margin-bottom:96px;overflow:hidden;position:relative;cursor:pointer}
 .photo-grid .photo-item img{width:100%;height:auto;display:block;transition:transform .4s ease,filter .3s}
