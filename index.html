@@ -36,12 +36,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
 .hero-sub{font-size:14px;font-weight:400;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 
-/* GRID — begint bovenaan, schuift onder hero door */
+
+/* GRID — speels masonry */
 .grid-section{margin-top:0;padding:0 0 100px;position:relative;z-index:1}
-.photo-grid{column-count:3;column-gap:96px;padding:0 96px}
-.photo-grid .photo-item{break-inside:avoid;margin-bottom:96px;overflow:hidden;position:relative;cursor:pointer}
+.photo-grid{column-count:3;column-gap:32px;padding:0 48px}
+.photo-grid .photo-item{break-inside:avoid;margin-bottom:32px;overflow:hidden;position:relative;cursor:pointer}
 .photo-grid .photo-item img{width:100%;height:auto;display:block;transition:transform .4s ease,filter .3s}
 .photo-grid .photo-item:hover img{transform:scale(1.03);filter:brightness(.88)}
+/* Speelse offset per foto */
+.photo-item.offset-r{margin-left:12%;margin-right:-4%}
+.photo-item.offset-l{margin-right:12%;margin-left:-4%}
+.photo-item.small{transform:scale(0.82);transform-origin:center top}
+.photo-item.large{transform:scale(1.1);transform-origin:center top}
+
 
 /* CATEGORIES */
 .categories{padding:80px 24px}
@@ -123,92 +130,83 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   <!-- FOTO GRID -->
   <section class="grid-section">
     <div class="photo-grid">
-      <!-- ANALOOG -->
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert Fabienne .jpg" alt="Analoog concert Fabienne">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert Fabienne gitaar .jpg" alt="Analoog concert Fabienne gitaar">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert KOKO 2.jpg" alt="Analoog concert KOKO">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert KOKO.jpg" alt="Analoog concert KOKO">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Danique 2.jpg" alt="Analoog portret Danique">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Daniquejpg.jpg" alt="Analoog portret Danique">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Danqique wit.jpg" alt="Analoog portret Danique wit">
-      </div>
-      <!-- CONCERT -->
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen hoofd.jpg" alt="Concert Eva van Manen">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen Rory.jpg" alt="Concert Eva van Manen Rory">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen sfeer.jpg" alt="Concert Eva van Manen sfeer">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen.jpg" alt="Concert Eva van Manen">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Jack Jarryd dubbel.jpg" alt="Concert Jack Jarryd">
+      <div class="photo-item small offset-r" onclick="openLightbox(this)">
+        <img src="assets/portret/Portret Lila Poppy.jpg" alt="Portret Lila Poppy">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Jack Jarryd kleur.jpg" alt="Concert Jack Jarryd kleur">
       </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concert Jack Jarryd roze">
+      <div class="photo-item large" onclick="openLightbox(this)">
+        <img src="assets/ANALOOG/Analoog concert KOKO.jpg" alt="Analoog concert KOKO">
       </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle afstand.jpg" alt="Concert Merle afstand">
+      <div class="photo-item offset-l" onclick="openLightbox(this)">
+        <img src="assets/portret/Roos.jpg" alt="Portret Roos">
       </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle Jelte.jpg" alt="Concert Merle Jelte">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle ZW.jpg" alt="Concert Merle ZW">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Weval grijs.jpg" alt="Concert Weval grijs">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
+      <div class="photo-item small" onclick="openLightbox(this)">
         <img src="assets/Concert/Concert Weval rood.jpg" alt="Concert Weval rood">
       </div>
-      <!-- PORTRET -->
       <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/LOE.  (1).jpg" alt="Portret LOE.">
+        <img src="assets/ANALOOG/Analoog Portret Danique 2.jpg" alt="Analoog portret Danique">
+      </div>
+      <div class="photo-item large offset-r" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Eva van Manen hoofd.jpg" alt="Concert Eva van Manen">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
         <img src="assets/portret/Morel.jpg" alt="Portret Morèl">
       </div>
-      <div class="photo-item" onclick="openLightbox(this)">
+      <div class="photo-item small" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Merle ZW.jpg" alt="Concert Merle ZW">
+      </div>
+      <div class="photo-item offset-l" onclick="openLightbox(this)">
         <img src="assets/portret/Nikki Szofia .jpg" alt="Portret Nikki Szofia">
       </div>
+      <div class="photo-item large" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concert Jack Jarryd roze">
+      </div>
       <div class="photo-item" onclick="openLightbox(this)">
+        <img src="assets/ANALOOG/Analoog concert KOKO 2.jpg" alt="Analoog concert KOKO 2">
+      </div>
+      <div class="photo-item small offset-r" onclick="openLightbox(this)">
         <img src="assets/portret/Portret Artyma.jpg" alt="Portret Artyma">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Weval grijs.jpg" alt="Concert Weval grijs">
+      </div>
+      <div class="photo-item large" onclick="openLightbox(this)">
+        <img src="assets/portret/LOE.  (1).jpg" alt="Portret LOE.">
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Eva van Manen Rory.jpg" alt="Concert Eva van Manen Rory">
+      </div>
+      <div class="photo-item small offset-l" onclick="openLightbox(this)">
         <img src="assets/portret/Portret Danique.jpg" alt="Portret Danique">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Lil rave.jpg" alt="Portret Lil rave">
+        <img src="assets/Concert/Concert Merle afstand.jpg" alt="Concert Merle afstand">
+      </div>
+      <div class="photo-item large offset-r" onclick="openLightbox(this)">
+        <img src="assets/ANALOOG/Analoog Portret Danqique wit.jpg" alt="Analoog portret Danique wit">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Lila Poppy.jpg" alt="Portret Lila Poppy">
+        <img src="assets/Concert/Concert Eva van Manen sfeer.jpg" alt="Concert Eva van Manen sfeer">
       </div>
-      <div class="photo-item" onclick="openLightbox(this)">
+      <div class="photo-item small" onclick="openLightbox(this)">
         <img src="assets/portret/Portret LOE. grond .jpg" alt="Portret LOE. grond">
       </div>
       <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/Roos.jpg" alt="Portret Roos">
+        <img src="assets/Concert/Concert Merle Jelte.jpg" alt="Concert Merle Jelte">
+      </div>
+      <div class="photo-item offset-l" onclick="openLightbox(this)">
+        <img src="assets/portret/Portret Lil rave.jpg" alt="Portret Lil rave">
+      </div>
+      <div class="photo-item large" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Eva van Manen.jpg" alt="Concert Eva van Manen">
+      </div>
+      <div class="photo-item small offset-r" onclick="openLightbox(this)">
+        <img src="assets/ANALOOG/Analoog Portret Daniquejpg.jpg" alt="Analoog portret Danique">
+      </div>
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="assets/Concert/Concert Jack Jarryd dubbel.jpg" alt="Concert Jack Jarryd dubbel">
       </div>
     </div>
   </section>
