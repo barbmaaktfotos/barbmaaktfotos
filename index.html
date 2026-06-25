@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--black:#1c1c1e;--white:#ffffff;--off-white:#f5f4f1;--muted:#888;--border:#e0deda;--max:1100px}
+:root{--black:#1c1c1e;--white:#ffffff;--off-white:#f5f4f1;--max:1100px}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;font-size:16px}
 a{color:inherit;text-decoration:none}
@@ -30,35 +30,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 /* PAGES */
 .page{display:none}.page.active{display:block}
 
-/* HERO — zweeft over het grid */
+/* HERO */
 .hero{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;z-index:10;pointer-events:none;transition:opacity .1s}
 .hero h1{font-family:'Fraunces',serif;font-size:clamp(38px,7vw,90px);font-weight:300;line-height:1.05;letter-spacing:-1px;max-width:800px;margin:0 auto 20px;color:#fff;text-shadow:0 2px 40px rgba(0,0,0,.4)}
 .hero h1 em{font-style:italic;color:rgba(255,255,255,.55)}
 .hero-sub{font-size:14px;font-weight:400;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 
-
-/* GRID — speels masonry */
-.grid-section{margin-top:0;padding:0 0 100px;position:relative;z-index:1}
-.photo-grid{column-count:3;column-gap:80px;padding:0 80px}
-.photo-grid .photo-item{break-inside:avoid;margin-bottom:80px;overflow:hidden;position:relative;cursor:pointer}
-.photo-grid .photo-item img{width:100%;height:auto;display:block;transition:transform .4s ease,filter .3s}
-.photo-grid .photo-item:hover img{transform:scale(1.03);filter:brightness(.88)}
-/* Speelse offset per foto — alleen horizontaal, geen overlap */
-.photo-item.offset-r{margin-left:10%;width:90%}
-.photo-item.offset-l{margin-left:0;width:90%}
-.photo-item.small{width:70%;margin-left:15%}
-
+/* GRID — absolute JS-layout */
+.grid-section{position:relative;z-index:1}
+#photo-canvas{position:relative;width:100%}
+.photo-item{position:absolute;cursor:pointer;overflow:hidden}
+.photo-item img{width:100%;height:auto;display:block;transition:transform .4s ease,filter .3s}
+.photo-item:hover img{transform:scale(1.03);filter:brightness(.85)}
 
 /* CATEGORIES */
-.categories{padding:80px 24px}
+.categories{padding:80px 24px;position:relative;z-index:2}
 .container{max-width:var(--max);margin:0 auto}
 .section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:40px}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .cat-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
 .cat-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s}
 .cat-item:hover img{transform:scale(1.05);filter:brightness(.7)}
-.cat-label{position:absolute;bottom:0;left:0;right:0;padding:32px 24px 24px;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%);transition:opacity .3s}
-.cat-label h3{font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,26px);font-weight:300;letter-spacing:-.2px;color:#fff}
+.cat-label{position:absolute;bottom:0;left:0;right:0;padding:32px 24px 24px;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%)}
+.cat-label h3{font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,26px);font-weight:300;color:#fff}
 .cat-label p{font-size:13px;color:rgba(255,255,255,.55);margin-top:4px}
 
 /* ABOUT */
@@ -71,7 +65,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 .about-contact:hover{color:#000;border-color:#000}
 
 /* FOOTER */
-footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32px 32px;display:flex;align-items:center;justify-content:space-between}
+footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32px 32px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
 .footer-logo{font-family:'Fraunces',serif;font-size:14px;font-weight:300;color:rgba(255,255,255,.4)}
 .footer-logo em{font-style:italic}
 .footer-right{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.3px}
@@ -87,15 +81,9 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 @media(max-width:768px){
   .nav-links{display:none}
   .nav-hamburger{display:block}
-  .photo-grid{column-count:2;column-gap:40px;padding:0 40px}
-  .photo-grid .photo-item{margin-bottom:40px}
   .cat-grid{grid-template-columns:1fr}
   .cat-item{aspect-ratio:4/3}
   footer{flex-direction:column;gap:12px;text-align:center}
-}
-@media(max-width:480px){
-  .photo-grid{column-count:1;column-gap:24px;padding:0 24px}
-  .photo-grid .photo-item{margin-bottom:24px}
 }
 </style>
 </head>
@@ -126,87 +114,10 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
     <h1>Barb <em>maakt</em><br>foto's</h1>
   </section>
 
-  <!-- FOTO GRID -->
+  <!-- FOTO GRID (JS layout) -->
   <section class="grid-section">
-    <div class="photo-grid">
-      <div class="photo-item small offset-r" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Lila Poppy.jpg" alt="Portret Lila Poppy">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Jack Jarryd kleur.jpg" alt="Concert Jack Jarryd kleur">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert KOKO.jpg" alt="Analoog concert KOKO">
-      </div>
-      <div class="photo-item offset-l" onclick="openLightbox(this)">
-        <img src="assets/portret/Roos.jpg" alt="Portret Roos">
-      </div>
-      <div class="photo-item small" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Weval rood.jpg" alt="Concert Weval rood">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Danique 2.jpg" alt="Analoog portret Danique">
-      </div>
-      <div class="photo-item offset-r" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen hoofd.jpg" alt="Concert Eva van Manen">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/Morel.jpg" alt="Portret Morèl">
-      </div>
-      <div class="photo-item small" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle ZW.jpg" alt="Concert Merle ZW">
-      </div>
-      <div class="photo-item offset-l" onclick="openLightbox(this)">
-        <img src="assets/portret/Nikki Szofia .jpg" alt="Portret Nikki Szofia">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concert Jack Jarryd roze">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog concert KOKO 2.jpg" alt="Analoog concert KOKO 2">
-      </div>
-      <div class="photo-item small offset-r" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Artyma.jpg" alt="Portret Artyma">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Weval grijs.jpg" alt="Concert Weval grijs">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/portret/LOE.  (1).jpg" alt="Portret LOE.">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen Rory.jpg" alt="Concert Eva van Manen Rory">
-      </div>
-      <div class="photo-item small offset-l" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Danique.jpg" alt="Portret Danique">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle afstand.jpg" alt="Concert Merle afstand">
-      </div>
-      <div class="photo-item offset-r" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Danqique wit.jpg" alt="Analoog portret Danique wit">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen sfeer.jpg" alt="Concert Eva van Manen sfeer">
-      </div>
-      <div class="photo-item small" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret LOE. grond .jpg" alt="Portret LOE. grond">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Merle Jelte.jpg" alt="Concert Merle Jelte">
-      </div>
-      <div class="photo-item offset-l" onclick="openLightbox(this)">
-        <img src="assets/portret/Portret Lil rave.jpg" alt="Portret Lil rave">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Eva van Manen.jpg" alt="Concert Eva van Manen">
-      </div>
-      <div class="photo-item small offset-r" onclick="openLightbox(this)">
-        <img src="assets/ANALOOG/Analoog Portret Daniquejpg.jpg" alt="Analoog portret Danique">
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="assets/Concert/Concert Jack Jarryd dubbel.jpg" alt="Concert Jack Jarryd dubbel">
-      </div>
+    <div id="photo-canvas">
+      <!-- foto's worden door JS gepositioneerd -->
     </div>
   </section>
 
@@ -217,24 +128,15 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       <div class="cat-grid">
         <div class="cat-item">
           <img src="assets/portret/Nikki Szofia .jpg" alt="Portretfotografie">
-          <div class="cat-label">
-            <h3>Portret</h3>
-            <p>Individuen & karakters</p>
-          </div>
+          <div class="cat-label"><h3>Portret</h3><p>Individuen & karakters</p></div>
         </div>
         <div class="cat-item">
           <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concertfotografie">
-          <div class="cat-label">
-            <h3>Concert</h3>
-            <p>Live muziek & energie</p>
-          </div>
+          <div class="cat-label"><h3>Concert</h3><p>Live muziek & energie</p></div>
         </div>
         <div class="cat-item">
           <img src="assets/Promotie en bruiloft/Bruiloft naar buiten.jpg" alt="Promotie & bruiloft">
-          <div class="cat-label">
-            <h3>Promotie & bruiloft</h3>
-            <p>Campagnes & bijzondere dagen</p>
-          </div>
+          <div class="cat-label"><h3>Promotie & bruiloft</h3><p>Campagnes & bijzondere dagen</p></div>
         </div>
       </div>
     </div>
@@ -254,7 +156,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
       </div>
     </section>
   </div>
-</div><!-- /page-about -->
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -269,6 +171,151 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 </footer>
 
 <script>
+// ── foto data: src, tag voor persoon-spreiding ──
+const PHOTOS = [
+  { src:'assets/portret/Portret Lila Poppy.jpg',        tag:'lilapoppy' },
+  { src:'assets/Concert/Concert Jack Jarryd kleur.jpg', tag:'jackjarryd' },
+  { src:'assets/ANALOOG/Analoog concert KOKO.jpg',      tag:'koko' },
+  { src:'assets/portret/Roos.jpg',                      tag:'roos' },
+  { src:'assets/Concert/Concert Weval rood.jpg',        tag:'weval' },
+  { src:'assets/ANALOOG/Analoog Portret Danique 2.jpg', tag:'danique' },
+  { src:'assets/Concert/Concert Eva van Manen hoofd.jpg',tag:'eva' },
+  { src:'assets/portret/Morel.jpg',                     tag:'morel' },
+  { src:'assets/Concert/Concert Merle ZW.jpg',          tag:'merle' },
+  { src:'assets/portret/Nikki Szofia .jpg',             tag:'nikki' },
+  { src:'assets/Concert/Concert Jack Jarryd roze.jpg',  tag:'jackjarryd' },
+  { src:'assets/ANALOOG/Analoog concert KOKO 2.jpg',    tag:'koko' },
+  { src:'assets/portret/Portret Artyma.jpg',            tag:'artyma' },
+  { src:'assets/Concert/Concert Weval grijs.jpg',       tag:'weval' },
+  { src:'assets/portret/LOE.  (1).jpg',                 tag:'loe' },
+  { src:'assets/Concert/Concert Eva van Manen Rory.jpg',tag:'eva' },
+  { src:'assets/portret/Portret Danique.jpg',           tag:'danique' },
+  { src:'assets/Concert/Concert Merle afstand.jpg',     tag:'merle' },
+  { src:'assets/ANALOOG/Analoog Portret Danqique wit.jpg',tag:'danique' },
+  { src:'assets/Concert/Concert Eva van Manen sfeer.jpg',tag:'eva' },
+  { src:'assets/portret/Portret LOE. grond .jpg',       tag:'loe' },
+  { src:'assets/Concert/Concert Merle Jelte.jpg',       tag:'merle' },
+  { src:'assets/portret/Portret Lil rave.jpg',          tag:'lilrave' },
+  { src:'assets/Concert/Concert Eva van Manen.jpg',     tag:'eva' },
+  { src:'assets/ANALOOG/Analoog Portret Daniquejpg.jpg',tag:'danique' },
+  { src:'assets/Concert/Concert Jack Jarryd dubbel.jpg',tag:'jackjarryd' },
+];
+
+const GAP = 80;       // minimale afstand tussen foto's px
+const PAD = 60;       // padding links/rechts van canvas
+const MIN_W = 200;    // minimale fotobreedte
+const MAX_W = 420;    // maximale fotobreedte
+const ASPECT_FALLBACK = 1.35; // portret aspect ratio als fallback
+
+function overlaps(a, b) {
+  return !(a.x + a.w + GAP <= b.x ||
+           b.x + b.w + GAP <= a.x ||
+           a.y + a.h + GAP <= b.y ||
+           b.y + b.h + GAP <= a.y);
+}
+
+function buildLayout() {
+  const canvas = document.getElementById('photo-canvas');
+  canvas.innerHTML = '';
+  const W = canvas.offsetWidth;
+  const placed = [];
+
+  // Shuffle met persoon-spreiding: nooit zelfde tag binnen 4 posities
+  function shuffleSpread(arr) {
+    const out = [];
+    const pool = [...arr];
+    while (pool.length) {
+      const recent = out.slice(-4).map(x => x.tag);
+      let idx = pool.findIndex(p => !recent.includes(p.tag));
+      if (idx === -1) idx = 0;
+      out.push(pool.splice(idx, 1)[0]);
+    }
+    return out;
+  }
+
+  const photos = shuffleSpread(PHOTOS);
+  let maxBottom = 0;
+
+  photos.forEach((photo, i) => {
+    const el = document.createElement('div');
+    el.className = 'photo-item';
+
+    const img = document.createElement('img');
+    img.src = photo.src;
+    img.alt = photo.src.split('/').pop().replace('.jpg','');
+    el.appendChild(img);
+    el.addEventListener('click', () => openLightbox(el));
+    canvas.appendChild(el);
+
+    // Willekeurige breedte
+    const w = Math.round(MIN_W + Math.random() * (MAX_W - MIN_W));
+    // Aspect ratio: laad image maar gebruik fallback voor eerste render
+    const naturalH = img.naturalHeight || 0;
+    const naturalW = img.naturalWidth || 1;
+    const aspect = naturalH > 0 ? naturalH / naturalW : ASPECT_FALLBACK;
+    const h = Math.round(w * aspect);
+
+    // Probeer een plek te vinden zonder overlap
+    let bestX = PAD, bestY = maxBottom + GAP;
+    let found = false;
+    const maxAttempts = 120;
+
+    for (let attempt = 0; attempt < maxAttempts && !found; attempt++) {
+      const x = PAD + Math.random() * Math.max(0, W - PAD * 2 - w);
+      // Y: ergens in de buurt van vorige foto's maar met variatie
+      const yBase = placed.length > 0
+        ? placed[Math.max(0, placed.length - 3)].y
+        : 0;
+      const y = Math.max(0, yBase + Math.random() * 300 - 80);
+
+      const candidate = { x, y, w, h };
+      if (!placed.some(p => overlaps(p, candidate))) {
+        bestX = x;
+        bestY = y;
+        found = true;
+      }
+    }
+
+    // Fallback: stapel onder de laatste foto
+    if (!found) {
+      bestX = PAD + Math.random() * Math.max(0, W - PAD * 2 - w);
+      bestY = maxBottom + GAP;
+    }
+
+    el.style.left = bestX + 'px';
+    el.style.top = bestY + 'px';
+    el.style.width = w + 'px';
+
+    const bottom = bestY + h;
+    if (bottom > maxBottom) maxBottom = bottom;
+    placed.push({ x: bestX, y: bestY, w, h });
+  });
+
+  // Hoogte canvas instellen
+  canvas.style.height = (maxBottom + GAP * 2) + 'px';
+
+  // Na laden van images: herbereken hoogtes
+  canvas.querySelectorAll('img').forEach((img, i) => {
+    img.onload = () => {
+      const el = img.parentElement;
+      const w = parseInt(el.style.width);
+      const h = Math.round(w * img.naturalHeight / img.naturalWidth);
+      // update placed entry
+      if (placed[i]) placed[i].h = h;
+      // herbereken canvas hoogte
+      const newMax = Math.max(...placed.map(p => p.y + p.h));
+      canvas.style.height = (newMax + GAP * 2) + 'px';
+    };
+  });
+}
+
+window.addEventListener('load', buildLayout);
+window.addEventListener('resize', () => {
+  clearTimeout(window._resizeT);
+  window._resizeT = setTimeout(buildLayout, 200);
+});
+
+// ── overige functies ──
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const p = document.getElementById('page-' + id);
