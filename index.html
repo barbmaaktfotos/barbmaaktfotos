@@ -54,17 +54,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:60px;d
 .scale-sm { transform:scale(.82); transform-origin:top center; margin-bottom:0 }
 .scale-lg { transform:scale(1.08); transform-origin:top center }
 
-/* CATEGORIES */
-.categories{padding:80px 24px;position:relative;z-index:2}
+.categories{padding:80px 48px;position:relative;z-index:2}
 .container{max-width:1100px;margin:0 auto}
-.section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:40px}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .cat-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
 .cat-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s}
-.cat-item:hover img{transform:scale(1.05);filter:brightness(.7)}
-.cat-label{position:absolute;bottom:0;left:0;right:0;padding:32px 24px 24px;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%)}
-.cat-label h3{font-family:'Fraunces',serif;font-size:clamp(18px,2.5vw,26px);font-weight:300;color:#fff}
-.cat-label p{font-size:13px;color:rgba(255,255,255,.55);margin-top:4px}
+.cat-item:hover img{transform:scale(1.05);filter:brightness(.6)}
+.cat-label{position:absolute;bottom:0;left:0;right:0;padding:32px 24px 24px;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 100%)}
+.cat-label h3{font-family:'Fraunces',serif;font-size:clamp(16px,2vw,22px);font-weight:300;color:#fff;letter-spacing:.2px}
 
 /* ABOUT */
 .about{padding:100px 24px;background:var(--off-white);color:var(--black)}
@@ -113,14 +110,14 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home');return false">Werk</a></li>
     <li><a href="#" onclick="showPage('about');return false">Over</a></li>
-    <li><a href="mailto:barbara@barbmaaktfotos.nl">Contact</a></li>
+    <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu">☰</button>
 </nav>
 <div id="navMobile" class="nav-mobile">
   <a href="#" onclick="showPage('home');toggleMobile();return false">Werk</a>
   <a href="#" onclick="showPage('about');toggleMobile();return false">Over</a>
-  <a href="mailto:barbara@barbmaaktfotos.nl" onclick="toggleMobile()">Contact</a>
+  <a href="#" onclick="showPage('contact');toggleMobile();return false">Contact</a>
 </div>
 
 <div id="page-home" class="page active">
@@ -227,19 +224,18 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 
   <section class="categories">
     <div class="container">
-      <p class="section-label">Specialisaties</p>
       <div class="cat-grid">
         <div class="cat-item" onclick="showPage('portret')">
           <img src="assets/portret/Nikki Szofia .jpg" alt="Portretfotografie">
-          <div class="cat-label"><h3>Portret</h3><p>Individuen & karakters</p></div>
+          <div class="cat-label"><h3>Portretfotografie</h3></div>
         </div>
         <div class="cat-item" onclick="showPage('concert')">
           <img src="assets/Concert/Concert Jack Jarryd roze.jpg" alt="Concertfotografie">
-          <div class="cat-label"><h3>Concert</h3><p>Live muziek & energie</p></div>
+          <div class="cat-label"><h3>Concertfotografie</h3></div>
         </div>
         <div class="cat-item" onclick="showPage('promotie')">
           <img src="assets/Promotie en bruiloft/Bruiloft naar buiten.jpg" alt="Promotie & bruiloft">
-          <div class="cat-label"><h3>Promotie & bruiloft</h3><p>Campagnes & bijzondere dagen</p></div>
+          <div class="cat-label"><h3>Promotie- en bruiloftsfotografie</h3></div>
         </div>
       </div>
     </div>
@@ -247,7 +243,15 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 
 </div>
 
-<div id="page-portret" class="page">
+<div id="page-contact" class="page">
+  <div style="min-height:100svh;display:flex;align-items:center;justify-content:center;padding:80px 24px">
+    <div style="text-align:center;max-width:500px">
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(32px,5vw,64px);font-weight:300;margin-bottom:16px">Contact</h2>
+      <p style="color:rgba(255,255,255,.5);font-size:15px;margin-bottom:48px">Voor boekingen, vragen of samenwerkingen.</p>
+      <a href="mailto:barbara@barbmaaktfotos.nl" style="font-family:'Fraunces',serif;font-size:clamp(18px,3vw,28px);font-weight:300;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:4px;transition:border-color .2s">barbara@barbmaaktfotos.nl</a>
+    </div>
+  </div>
+</div>
   <div class="cat-page-header">
     <button class="back-btn" onclick="showPage('home')">← Terug</button>
     <h2 class="cat-page-title">Portret</h2>
