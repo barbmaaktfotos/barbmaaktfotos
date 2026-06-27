@@ -105,56 +105,54 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 }
 /* MOBIELE FOTO STRIP */
 @media(max-width:600px){
-  .hero h1{font-size:clamp(32px,10vw,52px)}
-  .hero-sub{font-size:11px}
+  .hero{position:relative;min-height:auto;padding:40px 24px;z-index:2;pointer-events:auto}
+  .hero h1{font-size:clamp(32px,10vw,52px);text-shadow:none;color:#fff}
+  .hero h1 em{color:rgba(255,255,255,.45)}
+  .hero-sub{font-size:11px;color:rgba(255,255,255,.6)}
   .grid-section{padding:0}
   .masonry{
     column-count:unset;
     display:flex;
     flex-direction:row;
     overflow-x:auto;
-    gap:0;
-    padding:0;
+    gap:12px;
+    padding:16px 16px 24px;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
-    align-items:stretch;
-    height:100svh;
+    align-items:center;
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
-    flex:0 0 85vw;
+    flex:0 0 72vw;
     margin-bottom:0;
     scroll-snap-align:start;
-    overflow:hidden;
   }
   .masonry .photo-item img{
-    height:100%;
+    height:auto;
     width:100%;
-    object-fit:cover;
+    max-width:none;
     display:block;
+    object-fit:unset;
   }
   .masonry .photo-item.nudge-down-sm,
   .masonry .photo-item.nudge-down-md,
   .masonry .photo-item.nudge-down-lg{margin-top:0}
   .nav-links{display:none}
   .nav-hamburger{display:block}
+  .categories{padding:24px 16px 40px}
   .cat-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:6px;
     overflow-x:unset;
-    scroll-snap-type:unset;
-    padding-bottom:0;
   }
-  .cat-item{scroll-snap-align:unset;aspect-ratio:2/3}
-  .cat-label h3{font-size:13px}
+  .cat-item{aspect-ratio:2/3}
+  .cat-label h3{font-size:12px}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:12px;text-align:center}
-  .categories{padding:24px 16px 40px}
   .cat-page-header{padding:80px 24px 0}
   .about-grid{grid-template-columns:1fr !important;gap:48px !important}
-}
-</style>
+}</style>
 </head>
 <body>
 
@@ -427,6 +425,7 @@ document.addEventListener('keydown', e => { if (e.key==='Escape') closeLightbox(
 
 const hero = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 600) return;
   const opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.6));
   hero.style.opacity = opacity;
 }, { passive: true });
