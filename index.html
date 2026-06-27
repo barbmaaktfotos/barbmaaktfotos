@@ -118,11 +118,12 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
     display:flex;
     flex-direction:row;
     overflow-x:auto;
+    overflow-y:visible;
     gap:6px;
     padding:6px 6px 6px;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
-    align-items:center;
+    align-items:flex-start;
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
@@ -134,7 +135,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .masonry .photo-item img{
     height:38svh;
     width:auto;
-    max-width:none;
+    max-width:80vw;
     display:block;
   }
   .masonry .photo-item.nudge-down-sm,
