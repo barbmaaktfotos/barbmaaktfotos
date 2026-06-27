@@ -108,8 +108,10 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .grid-section{padding:0 0 60px}
   .masonry{
     column-count:unset;
-    display:flex;
-    flex-direction:row;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, 60vw);
+    grid-template-rows:repeat(2, auto);
+    grid-auto-flow:column;
     overflow-x:auto;
     gap:12px;
     padding:24px 24px 32px;
@@ -118,8 +120,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
-    flex:0 0 72vw;
-    max-width:72vw;
+    width:60vw;
     margin-bottom:0;
     scroll-snap-align:start;
   }
@@ -200,15 +201,15 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
     <div class="cat-grid">
       <div class="cat-item" onclick="showPage('portret')">
         <img src="assets/ANALOOG/Analoog Portret Danique 2.jpg" alt="Portretfotografie">
-        <div class="cat-label"><h3>Portretfotografie & artwork</h3></div>
+        <div class="cat-label"><h3>Portret, pers & artwork</h3></div>
       </div>
       <div class="cat-item" onclick="showPage('concert')">
         <img src="assets/Concert/Concert Weval grijs.jpg" alt="Concertfotografie">
-        <div class="cat-label"><h3>Concertfotografie</h3></div>
+        <div class="cat-label"><h3>Concert</h3></div>
       </div>
       <div class="cat-item" onclick="showPage('promotie')">
         <img src="assets/Promotie en bruiloft/Bruiloft Laura zebrapad.jpg" alt="Promotie & bruiloft">
-        <div class="cat-label"><h3>Promotie- en bruiloftsfotografie</h3></div>
+        <div class="cat-label"><h3>Promotie & bruiloft</h3></div>
       </div>
     </div>
   </section>
@@ -218,7 +219,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 <div id="page-portret" class="page">
   <div class="cat-page-header">
     <button class="back-btn" onclick="showPage('home')">← Terug</button>
-    <h2 class="cat-page-title">Portretfotografie & artwork</h2>
+    <h2 class="cat-page-title">Portret, pers & artwork</h2>
   </div>
   <section class="grid-section">
     <div class="masonry">
@@ -248,7 +249,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 <div id="page-concert" class="page">
   <div class="cat-page-header">
     <button class="back-btn" onclick="showPage('home')">← Terug</button>
-    <h2 class="cat-page-title">Concertfotografie</h2>
+    <h2 class="cat-page-title">Concert</h2>
   </div>
   <section class="grid-section">
     <div class="masonry">
@@ -275,7 +276,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 <div id="page-promotie" class="page">
   <div class="cat-page-header">
     <button class="back-btn" onclick="showPage('home')">← Terug</button>
-    <h2 class="cat-page-title">Promotie- en bruiloftsfotografie</h2>
+    <h2 class="cat-page-title">Promotie & bruiloft</h2>
   </div>
   <section class="grid-section">
     <div class="masonry">
