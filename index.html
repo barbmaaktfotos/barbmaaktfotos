@@ -122,15 +122,12 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
     flex:0 0 auto;
     margin-bottom:0;
     scroll-snap-align:start;
-    height:70vw;
-    display:flex;
-    align-items:center;
   }
   .masonry .photo-item img{
+    height:65vw;
     width:auto;
-    height:100%;
     max-width:none;
-    object-fit:contain;
+    display:block;
   }
   .masonry .photo-item.nudge-down-sm,
   .masonry .photo-item.nudge-down-md,
@@ -138,18 +135,18 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .nav-links{display:none}
   .nav-hamburger{display:block}
   .cat-grid{
-    grid-template-columns:repeat(3,75vw);
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-    gap:12px;
-    padding-bottom:8px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    overflow-x:unset;
+    scroll-snap-type:unset;
+    padding-bottom:0;
   }
-  .cat-grid::-webkit-scrollbar{display:none}
-  .cat-item{scroll-snap-align:start}
+  .cat-item{scroll-snap-align:unset;aspect-ratio:2/3}
+  .cat-label h3{font-size:11px}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:12px;text-align:center}
-  .categories{padding:40px 0 40px 24px}
+  .categories{padding:40px 16px}
   .cat-page-header{padding:80px 24px 0}
   .about-grid{grid-template-columns:1fr !important;gap:48px !important}
 }
