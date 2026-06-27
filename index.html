@@ -115,12 +115,22 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
     padding:24px 24px 32px;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
+    align-items:center;
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
-    flex:0 0 75vw;
+    flex:0 0 auto;
     margin-bottom:0;
     scroll-snap-align:start;
+    height:70vw;
+    display:flex;
+    align-items:center;
+  }
+  .masonry .photo-item img{
+    width:auto;
+    height:100%;
+    max-width:none;
+    object-fit:contain;
   }
   .masonry .photo-item.nudge-down-sm,
   .masonry .photo-item.nudge-down-md,
