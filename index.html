@@ -108,10 +108,8 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .grid-section{padding:0 0 60px}
   .masonry{
     column-count:unset;
-    display:grid;
-    grid-template-columns:repeat(auto-fill, 60vw);
-    grid-template-rows:repeat(2, auto);
-    grid-auto-flow:column;
+    display:flex;
+    flex-direction:row;
     overflow-x:auto;
     gap:12px;
     padding:24px 24px 32px;
@@ -120,7 +118,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
-    width:60vw;
+    flex:0 0 75vw;
     margin-bottom:0;
     scroll-snap-align:start;
   }
@@ -129,10 +127,19 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .masonry .photo-item.nudge-down-lg{margin-top:0}
   .nav-links{display:none}
   .nav-hamburger{display:block}
-  .cat-grid{grid-template-columns:1fr}
+  .cat-grid{
+    grid-template-columns:repeat(3,75vw);
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:12px;
+    padding-bottom:8px;
+  }
+  .cat-grid::-webkit-scrollbar{display:none}
+  .cat-item{scroll-snap-align:start}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:12px;text-align:center}
-  .categories{padding:40px 24px}
+  .categories{padding:40px 0 40px 24px}
   .cat-page-header{padding:80px 24px 0}
   .about-grid{grid-template-columns:1fr !important;gap:48px !important}
 }
