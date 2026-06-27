@@ -105,28 +105,32 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 }
 /* MOBIELE FOTO STRIP */
 @media(max-width:600px){
-  .grid-section{padding:60px 0 60px}
+  .hero h1{font-size:clamp(32px,10vw,52px)}
+  .hero-sub{font-size:11px}
+  .grid-section{padding:0}
   .masonry{
     column-count:unset;
     display:flex;
     flex-direction:row;
     overflow-x:auto;
-    gap:12px;
-    padding:24px 24px 32px;
+    gap:0;
+    padding:0;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
-    align-items:center;
+    align-items:stretch;
+    height:100svh;
   }
   .masonry::-webkit-scrollbar{display:none}
   .masonry .photo-item{
-    flex:0 0 auto;
+    flex:0 0 85vw;
     margin-bottom:0;
     scroll-snap-align:start;
+    overflow:hidden;
   }
   .masonry .photo-item img{
-    height:65vw;
-    width:auto;
-    max-width:none;
+    height:100%;
+    width:100%;
+    object-fit:cover;
     display:block;
   }
   .masonry .photo-item.nudge-down-sm,
@@ -137,7 +141,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .cat-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:8px;
+    gap:6px;
     overflow-x:unset;
     scroll-snap-type:unset;
     padding-bottom:0;
@@ -146,7 +150,7 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .cat-label h3{font-size:13px}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:12px;text-align:center}
-  .categories{padding:40px 16px}
+  .categories{padding:24px 16px 40px}
   .cat-page-header{padding:80px 24px 0}
   .about-grid{grid-template-columns:1fr !important;gap:48px !important}
 }
