@@ -103,18 +103,37 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
   .masonry{column-count:2}
   .cat-grid{grid-template-columns:1fr 1fr}
 }
+/* MOBIELE FOTO STRIP */
 @media(max-width:600px){
-  .masonry{column-count:1}
+  .grid-section{padding:0 0 60px}
+  .masonry{
+    column-count:unset;
+    display:flex;
+    flex-direction:row;
+    overflow-x:auto;
+    gap:12px;
+    padding:24px 24px 32px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .masonry::-webkit-scrollbar{display:none}
+  .masonry .photo-item{
+    flex:0 0 72vw;
+    max-width:72vw;
+    margin-bottom:0;
+    scroll-snap-align:start;
+  }
+  .masonry .photo-item.nudge-down-sm,
+  .masonry .photo-item.nudge-down-md,
+  .masonry .photo-item.nudge-down-lg{margin-top:0}
   .nav-links{display:none}
   .nav-hamburger{display:block}
   .cat-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:12px;text-align:center}
-  .nudge-down-sm,.nudge-down-md,.nudge-down-lg{margin-top:0}
-  .grid-section{padding:40px 24px 60px}
   .categories{padding:40px 24px}
   .cat-page-header{padding:80px 24px 0}
-  .about-grid{grid-template-columns:1fr !important;gap:40px !important}
+  .about-grid{grid-template-columns:1fr !important;gap:48px !important}
 }
 </style>
 </head>
@@ -289,11 +308,8 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
 
       <!-- KOLOM 2: KLANTEN & ARTIESTEN -->
       <div>
-        <p style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,36px);font-weight:300;color:#fff;margin-bottom:32px;letter-spacing:-.5px">Klanten</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:40px">[Klant 1], [Klant 2], [Klant 3], [Klant 4], [Klant 5], [Klant 6], [Klant 7]</p>
-
-        <p style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,36px);font-weight:300;color:#fff;margin-bottom:32px;letter-spacing:-.5px">Artiesten</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.85">[Artiest 1], [Artiest 2], [Artiest 3], [Artiest 4], [Artiest 5], [Artiest 6]</p>
+        <p style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,36px);font-weight:300;color:#fff;margin-bottom:32px;letter-spacing:-.5px">Klanten & artiesten</p>
+        <p style="font-size:15px;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:40px">Eva van Manen, Jopke, Elaine, Danique Jeanne, Jack Jarryd, Weval, LOE.</p>
       </div>
 
       <!-- KOLOM 3: CONTACT -->
