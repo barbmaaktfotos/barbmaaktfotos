@@ -372,20 +372,20 @@ footer{background:#1a1a1a;border-top:1px solid rgba(255,255,255,.08);padding:32p
         <div class="form-row">
           <div class="form-group">
             <label>Naam</label>
-            <input type="text" id="cf-naam" placeholder="Je naam">
+            <input type="text" id="cf-naam" name="naam" placeholder="Je naam">
           </div>
           <div class="form-group">
             <label>E-mailadres</label>
-            <input type="email" id="cf-email" placeholder="je@email.nl">
+            <input type="email" id="cf-email" name="email" placeholder="je@email.nl">
           </div>
         </div>
         <div class="form-group">
           <label>Datum (indien van toepassing)</label>
-          <input type="date" id="cf-datum">
+          <input type="date" id="cf-datum" name="datum">
         </div>
         <div class="form-group">
           <label>Bericht</label>
-          <textarea id="cf-bericht" placeholder="Vertel wat meer over je opdracht of vraag..."></textarea>
+          <textarea id="cf-bericht" name="bericht" placeholder="Vertel wat meer over je opdracht of vraag..."></textarea>
         </div>
         <button class="submit-btn" onclick="verstuurForm()">Verstuur bericht</button>
       </div>
@@ -440,7 +440,7 @@ window.addEventListener('scroll', () => {
   hero.style.opacity = opacity;
 }, { passive: true });
 
-function verstuurForm() {
+async function verstuurForm() {
   const naam = document.getElementById('cf-naam').value.trim();
   const email = document.getElementById('cf-email').value.trim();
   const datum = document.getElementById('cf-datum').value;
@@ -449,11 +449,28 @@ function verstuurForm() {
     alert('Vul je naam, e-mailadres en bericht in.');
     return;
   }
-  const datumTekst = datum ? `\nDatum: ${datum}` : '';
-  const mailtoLink = `mailto:barbara@barbmaaktfotos.nl?subject=Contactformulier van ${encodeURIComponent(naam)}&body=${encodeURIComponent(`Naam: ${naam}\nE-mail: ${email}${datumTekst}\n\nBericht:\n${bericht}`)}`;
-  window.location.href = mailtoLink;
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Bezig...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xdaqaall', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ naam, email, datum, bericht })
+    });
+    if (res.ok) {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert('Er ging iets mis. Probeer het opnieuw.');
+      btn.textContent = 'Verstuur bericht';
+      btn.disabled = false;
+    }
+  } catch {
+    alert('Er ging iets mis. Probeer het opnieuw.');
+    btn.textContent = 'Verstuur bericht';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
